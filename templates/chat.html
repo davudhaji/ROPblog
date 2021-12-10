@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+    
+{% block body %}
+
+    <style>
+      div.msg_bbl {
+        background-color: #ddd;
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: #555;
+        margin-bottom: 5px;
+      }
+    </style>
+
+    
+    <center><h1>Chat Room</h1></center>
+    <div class="container">
+      <div class="col-sm-8">
+      
+        <div class="no_message">
+           {% if message %}
+           <br><br><br>
+            <div class="message_holder">
+            {% for mess in message %}
+              <div class="msg_bbl"><b style="color: #000">{{mess.name}}</b> {{mess.message}}            <p><i>{{mess.date}}</i><p></div>
+            {% endfor %}
+            
+            <br>
+              
+
+            </div>
+          {% else %}
+            <h1 style='color: #ccc'>No message yet..</h1>
+            <div class="message_holder">
+
+            </div>
+          {% endif %}
+      </div>
+      <div class="col-sm-4">
+        <form action="" method="POST">
+          
+          <div class="clearfix" style="margin-top: 5px;"></div>
+          <div style="padding-top: 5px;"></div>
+          <input type="text" class="message form-control" placeholder="Messages">
+          <div style="padding-top: 5px;"></div>
+          <button type="submit" class="btn btn-success btn-block"><span class="glyphicon glyphicon-send"></span> Send</button>
+        </form>
+      </div>
+    </div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+ <br> <br> <br> <br>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script>
+      var socket = io.connect( 'http://' + document.domain + ':' + location.port )
+      // broadcast a message
+      socket.on( 'connect', function() {
+        socket.emit( 'my event', {
+          data: 'User Connected'
+        } )
+        var form = $( 'form' ).on( 'submit', function( e ) {
+          e.preventDefault()
+          let user_name = "{{name}}"
+          let user_input = $( 'input.message' ).val()
+          socket.emit( 'my event', {
+            user_name : user_name,
+            message : user_input
+          } )
+          // empty the input field
+          $( 'input.message' ).val( '' ).focus()
+        } )
+      } )
+
+      // capture message
+      socket.on( 'my response', function( msg ) {
+        console.log( msg )
+        if( typeof msg.user_name !== 'undefined' ) {
+          $( 'h1' ).remove()
+          $( 'div.message_holder' ).append( '<div class="msg_bbl"><b style="color: #000">'+msg.user_name+'</b> '+msg.message+'</div>' )
+        }
+      } )
+    </script>
+{% endblock body %}

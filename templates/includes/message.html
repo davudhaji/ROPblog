@@ -1,0 +1,47 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div>
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }}" role="alert">
+            {% if category=="danger" %}
+                <strong>Oops!</strong>
+                {{ message }} 
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            {% elif category=="success" %}
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Əla!</h4>
+                    <p>Sən uğurla Qeydiyatdan Kecdin. Artiq səndə isdifadəci kimi saytımızdan yararlana bilərsən</p>
+                    <hr>
+                    <p class="mb-0">Giriş etmək üçün sağda yerləşən "Giriş" Düməsinə clickləyə bilersən ;D</p>
+
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+                        <span aria-hidden="true">&times;</span>
+                    
+                    </button>
+                </div>
+            {% elif category=="success1" %}
+              
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>Əla!</strong>
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% elif category=="success2" %}
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{message}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            
+        </div>
+    {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}

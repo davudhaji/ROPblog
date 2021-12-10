@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h3>Control Paneli</h3>
+    <hr>
+    <br>
+    <a href="/addArticle" class="btn btn-success">Məqalə Əlavə Et</a>
+    <br><br><br>
+    <h3>Əlavə Etiyin Məqalələr</h3>
+    <hr>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">id</th>
+            <th scope="col">Başlıq</th>
+            <th scope="col">Yazar</th>
+            <th scope="col">Tarix</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        {% if len %}
+            {% for article in range(-1,-len-1,-1) %}
+                <tbody>
+                    <tr>
+                    <th scope="row">{{data[article].id}}</th>
+                    <td><a href="articles/{{data[article].id}}">{{data[article].title}}</a></td>
+                    <td>{{data[article].author}}</td>
+                    <td>{{data[article].time}}</td>
+                    <td><a class="btn btn-sm btn-primary" href="edit/{{data[article].id}}"><i class="far fa-edit"></i>Güncəllə</td>
+                    
+                    <td><a class="btn btn-sm btn-danger" href="delete/{{data[article].id}}"><i class="fas fa-trash-alt"></i> Sil</td>
+                    </tr>
+                </tbody>
+        
+            {% endfor %}  
+        {% else %}
+        {% endif %}
+  
+</table>
+<br><br><br><br><br><br><br><br>
+
+{% endblock body %}

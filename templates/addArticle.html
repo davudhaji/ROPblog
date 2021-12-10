@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+        {% from "includes/formhelper.html" import render_field %}
+        <form method="post" enctype=multipart/form-data> 
+            {{ render_field(form.title,class="form-control") }}
+            {{ render_field(form.content,class="form-control") }}
+
+            <br>
+             <div class="form-inline col-md-10 col-sm-9 col-xs-12">     
+                    <input type=file name=file><br>
+                    <label><b>Üzlük Şəkili Əlavə Et</b></label>                   
+            </div>
+            
+            <br><br>
+            <button type="submit" class="btn btn-success">Yayınla</button>
+        </form>
+        <br><br><br><br><br><br>
+{% endblock body %}

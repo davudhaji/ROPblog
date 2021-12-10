@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">    <title>Republic Of Programmers</title>
+    <style type="text/css">
+
+
+
+        html,body{
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+ 
+        #page-content {
+        flex: 1 0 auto;
+        }
+
+        #sticky-footer {
+        flex-shrink: none;
+        }
+        footer{
+            background-color: #000;
+        }
+        .spinner{
+        width: 80px;
+        height: 80px;
+        
+        border: 2px solid #f3f3f3;
+        border-top:3px solid #f25a41;
+        border-radius: 100%;
+        
+        position: absolute;
+        top:0;
+        bottom:0;
+        left:0;
+        right: 0;
+        margin: auto;
+        
+        animation: spin 1s infinite linear;
+    }
+    #circle {
+	    position: absolute;
+	    top: 50%;
+	    left: 50%;
+	    transform: translate(-50%,-50%);
+		width: 150px;
+	    height: 150px;	
+	}
+
+	.loader {
+	    width: calc(100% - 0px);
+		height: calc(100% - 0px);
+		border: 8px solid #162534;
+		border-top: 8px solid #09f;
+		border-radius: 50%;
+		animation: rotate 5s linear infinite;
+	}
+
+    @keyframes spin {
+        from{
+            transform: rotate(0deg);
+        }to{
+            transform: rotate(360deg);
+        }
+    }
+
+    #overlay{
+    height:100%;
+    width:100%;
+    background:rgba(0, 0, 0, 1);
+    position:fixed;
+    left:0;
+    top:0;
+    z-index:5;  
+    }
+        
+
+
+        /* Other Classes for Page Styling */
+
+
+    </style>
+    {% block head %}
+    
+    {% endblock head %}
+</head>
+
+<body>
+ 
+
+    <div id="overlay">
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+    
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+        <div class="spinner"><div class="spinner"><div class="spinner"></div></div></div><div class="spinner"><div class="spinner"><div class="spinner"></div></div></div>
+    </div>
+
+</div>
+
+    <div class="loader-wrapper">
+    {% include "includes/navbar.html" %}
+    
+    <br><br><br><br>
+    <div class="container">
+        {% include "includes/message.html" %}
+        {% block body %}
+    
+        {% endblock body %}
+    
+    </div>
+ 
+
+    
+    <!-- Footer -->
+<footer class="page-footer font-small teal pt-4">
+
+  <!-- Footer Text -->
+  <div class="container-fluid text-center text-md-left">
+
+    <!-- Grid row -->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Content -->
+        <h5 class="text-uppercase font-weight-bold">Məksədimiz</h5>
+        <p>Azərbaycanda Developerlərin Bu Site dan İsdifadə Edərək Həm Öyrənib Həm də Öyrətmələridir!!</p>
+        <p>Bu Sayədə Həm Özləri Həmdə Site dan İsdifadə Edən User lər İsdədiklərini Məqaləni Mənimsəyərək İnkişaf Edə Biləcəklər</p>
+        <br><br>
+        <h5 class="text-uppercase font-weight-bold">Founders</h5>
+        <p>Backend Developer : <b>Haji Davud</b></p>
+        <p>Designer: <b>Hajili Sadig</b></p>
+
+      </div>
+       <div class="col-md-6 mb-md-0 mb-3">
+
+        <!-- Content -->
+        <div class="col-md-3 mx-auto">
+
+        <!-- Links -->
+        <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Sosial Şəbkələr:</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="https://www.youtube.com/channel/UC3Tf_CNM8LtpeWPuMQkKUGg?view_as=subscriber">Yotube</a>
+          </li>
+          <li>
+            <a href="https://twitter.com/haci_davud">Twitter</a>
+          </li>
+          <li>
+            <a href="https://www.facebook.com/davud.haci.50/">Fecebook</a>
+          </li>
+          <li>
+            <a href="https://www.instagram.com/davudhajii/">Instagram</a>
+          </li>
+        </ul>
+
+      </div>
+
+      </div>
+
+      <hr class="clearfix w-100 d-md-none pb-3">
+
+     
+    </div>
+    
+    <!-- Grid row -->
+
+  </div>
+  <br><br>
+  <div class="footer-copyright text-center py-3">© 2020 Copyright
+    
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+    <!-- Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <script>
+        var overlay = document.getElementById("overlay");
+            window.addEventListener('load', function(){
+            overlay.style.display = 'none';
+            })  
+   
+    </script>
+    <script>
+            CKEDITOR.replace( 'content',{
+              allowedContent : true
+            });
+    </script>
+
+ 
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    {% if data %}
+        <b><h3>{{data.title}}</h3></b>
+        <hr>
+        Yazar: <a href="/viewProfil/{{data.author_id}}">{{data.author}}</a>
+        <br>
+        <hr>
+        Tarix: {{data.time}}
+        <hr><br>
+        
+        {{data.content|safe}}
+        
+    {% else %}
+    {% endif %}
+    <br><br>
+    <h3>Yorumlar</h3>
+    <hr>
+    {% if session.id %}
+        <form method="post" action="/addComment/{{data.id}}">
+            <button type="submit"></button>
+
+        </form>
+    
+    {% else %}
+    {% endif %}
+    <br><br><br><br><br><br><br><br><br><br>
+{% endblock body %}
